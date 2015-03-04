@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  	<head>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/p5.js/0.3.14/p5.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/p5.js/0.3.14/addons/p5.dom.js"></script>
+	   <script>
+			var songUrl, label, playButton;
+			
+			function setup() {
+			  songUrl = createInput();
+			  songUrl.size(200, 20);
+			  label = createSpan("Enter the URL for a song here: ");
+			  label.child(songUrl);
+			  label.position(10,10);
+			  playButton = createButton('play that music!');
+			  playButton.position(10, 40);
+			  playButton.mousePressed(getSong);
+			}
+			
+			function getSong() {
+				var song = songUrl.value();
+				song = song.replace("http://", "");
+				song = song.replace("https://", "");
+				result = httpGet("/arduino/"+ song);
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
