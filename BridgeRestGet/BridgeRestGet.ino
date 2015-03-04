@@ -24,14 +24,15 @@ Where xxx is a numeric string from 0 -255
 
 #include <Bridge.h>
 
-char dataBuffer[4];
-int red, green, blue;
-String dataString;
+char dataBuffer[4];      // buffer for receiving the data. You need an extra byte at the end, so 4 bytes to get 3
+int red, green, blue;    // ints to set the LED brightnesses
+String dataString;       // a string for the buffer-to-int conversion
 
 void setup() {
   // initiate Bridge connection to linux processor:
   Bridge.begin();
   Serial.begin(9600);
+  // use pin 8 as a cathode ground pin:
   pinMode(8, OUTPUT);
   digitalWrite(8, LOW);
 }
@@ -53,5 +54,6 @@ void loop() {
   analogWrite(11, red);
   analogWrite(9, green);
   analogWrite(10, blue);
+  // slight delay before next read of the linux data store:
   delay(100);
 }
