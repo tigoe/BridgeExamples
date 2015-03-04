@@ -4,10 +4,7 @@
  This example shows how to use the Bridge Library's put() command
  to send data from the Arduino processor to the linux processor.
  That data can later be requested from the linux processor using the
- REST API.
-
- The enclosed wed page will get the data via the REST API.
- You can also call it yourself from the URL:
+ REST API like so:
  http://arduino.local/data/get/temperature
 
  The circuit:
