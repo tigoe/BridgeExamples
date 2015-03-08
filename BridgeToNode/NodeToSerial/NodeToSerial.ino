@@ -1,17 +1,17 @@
 /*
   Running Node.js processes asynchronously using
   the Process class.
+  Context:  Arduino, for Yun
 
- This sketch shows how to run a node.js script as a linux shell command
- using an Arduino Yún. It starts a process running asynchronously,
- then passes bytes from the STDOUT of the process to the Arduino's
- serial port.  Any bytes from the Arduino's serial port
- are sent to the STDIN of the process.
+  This sketch shows how to run a node.js script as a linux shell command
+  using an Arduino Yún. It starts a process running asynchronously,
+  then passes bytes from the STDOUT of the process to the Arduino's
+  serial port.  Any bytes from the Arduino's serial port
+  are sent to the STDIN of the process.
 
- created 21 Jun 2014
- modified 8 Mar 2015
- by Tom Igoe
-
+  created 21 Jun 2014
+  modified 8 Mar 2015
+  by Tom Igoe
  */
 
 #include <Process.h>
@@ -24,7 +24,7 @@ void setup() {
 
   // Wait until a Serial Monitor is connected.
   while (!Serial);
-  
+
   // launch the echo.js script asynchronously:
   nodejs.runShellCommandAsynchronously("node /mnt/sda1/arduino/node/echo.js");
   Serial.println("Started process");

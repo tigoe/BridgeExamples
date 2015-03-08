@@ -1,5 +1,6 @@
 /*
  Bridge to dweet.io
+ Context:  Arduino, for Yun
 
  Uses Arduino Bridge library to store sensor data on dweet.io
 
@@ -12,7 +13,6 @@
  created 15 Oct 2014
  modified 8 Mar 2015
  by Tom Igoe
-
 */
 #include <Bridge.h>
 #include <Process.h>

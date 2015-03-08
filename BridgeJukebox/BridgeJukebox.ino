@@ -1,5 +1,6 @@
 /*
   Bridge Jukebox
+  Context:  Arduino, for Yun
 
   Serves a web page that allows the user to enter the URL of
   an mp3 file. When the user enters an mp3, the sketch downloads

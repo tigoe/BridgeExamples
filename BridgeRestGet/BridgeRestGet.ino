@@ -1,11 +1,12 @@
 /*
   RGB LED controller using REST interface
+  Context:  Arduino, for Yun
 
  This example shows how to use the Bridge Library's get() command
  to get data from the linux processor to the Arduino processor.
  That data can be put in the linux processor's data store using the
  REST API like so:
- 
+
 http://arduino.local/data/put/red/xxx
 http://arduino.local/data/put/green/xxx
 http://arduino.local/data/put/blue/xxx
@@ -49,7 +50,7 @@ void loop() {
   Bridge.get("blue", dataBuffer, 3);  // get the blue value
   dataString = String(dataBuffer);    // convert to a String
   blue = dataString.toInt();          // convert String to int
-  
+
   // turn on the LED channels:
   analogWrite(11, red);
   analogWrite(9, green);

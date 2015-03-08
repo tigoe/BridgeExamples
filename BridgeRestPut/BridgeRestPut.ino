@@ -1,22 +1,20 @@
 /*
   Temperature web interface
+  Context:  Arduino, for Yun
 
- This example shows how to use the Bridge Library's put() command
- to send data from the Arduino processor to the linux processor.
- That data can later be requested from the linux processor using the
- REST API like so:
- http://arduino.local/data/get/temperature
+  This example shows how to use the Bridge Library's put() command
+  to send data from the Arduino processor to the linux processor.
+  That data can later be requested from the linux processor using the
+  REST API like so:
+  http://arduino.local/data/get/temperature
 
- The circuit:
- * TMP36 temperature sensor on analog pin A1
- * SD card attached to SD card slot of the Arduino Yún
+  The circuit:
+  * TMP36 temperature sensor on analog pin A1
+  * SD card attached to SD card slot of the Arduino Yún
 
- created  24 Feb 2014
- modified 4 Mar 2015
- by Tom Igoe
-
- This example code is in the public domain.
-
+  created  24 Feb 2014
+  modified 4 Mar 2015
+  by Tom Igoe
  */
 
 #include <Bridge.h>
