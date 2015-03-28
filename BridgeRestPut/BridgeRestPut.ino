@@ -41,5 +41,5 @@ void loop() {
   Serial.println(output);
   Serial.println("uploading data for REST API");
   Bridge.put("temperature", output);
-  delay(10000);
+  delay(5000);
 }

@@ -1,0 +1,67 @@
+<!-- Analog Graphing example for Arduino Yún
+
+When served from an Arduino Yún running the BridgeRestPut sketch,
+this page graphs the temperature output of the board, updating every
+five seconds. Uses http://p5js.org to do the graphing.
+
+Put this file on an SD card, in /arduino/www/temperature. Insert in your
+Yún, then to see it, open a browser to http://youryun.local/sd/temperature
+(change youryun.local to your Yún's address).
+
+created 27 Mar 2015
+by Tom Igoe -->
+
+<html>
+<head>
+  <title></title>
+  <script src="p5.min.js"></script>
+  <script src="p5.dom.js"></script>
+  <script>
+  var lastTemp = 0;   // last temperature reading
+  var x = 0;          // x position
+  var lastX = 0;      // last x position
+
+  function setup() {
+    createCanvas(600, 400);       // set the canvas size
+    getTemp();                    // get the temperature
+    setInterval(getTemp, 5000);   // set an interval to do it every 5 seconds
+    resetScreen();                // reset the screen
+  }
+
+  // Draw is not needed
+  // function draw() {
+  //
+  // }
+
+  function resetScreen() {
+    background(255);                // white background
+    line(0, 0, 0, height);          // vertical axis
+    line(0, height, width, height); // horizontal axis
+  }
+
+  function getTemp() {
+    httpGet('/data/get/temperature', readResult);   // request the temperature
+  }
+
+  function readResult(data) {
+    result = JSON.parse(data);              // parse the result of the request
+    var temperature = result.value;         // get the 'value' property from the result
+    y = map(temperature, 0, 100, 400, 0);   // map sensor value for graphing
+    line(lastX, lastTemp, x, y);            // draw a line from the last graphed point
+    lastTemp = y;                           // save y position for next time
+    lastX = x;                              // save x position for next time
+
+    // if x is at the edge of the screen, reset the screen;
+    if (x < width) {
+      x+= 10;
+    } else {
+      x = 0;
+      resetScreen();
+    }
+  }
+  </script>
+</head>
+<body>
+
+</body>
+</html>
