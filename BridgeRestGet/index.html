@@ -1,0 +1,57 @@
+<!-- RGB control example for Arduino Yún
+
+When served from an Arduino Yún running the BridgeRestGet sketch,
+this page give the user slider controllers for the RGB LED
+attached to the Yún. Uses http://p5js.org to make the UI.
+
+Put this file on an SD card, in /arduino/www/rgb. Insert in your
+Yún, then to see it, open a browser to http://youryun.local/sd/rgb
+(change youryun.local to your Yún's address).
+
+created 29 Mar 2015
+by Tom Igoe -->
+
+<html>
+<head>
+  <title></title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.2/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.2/addons/p5.dom.js"></script>
+  <script>
+  var redSlider, greenSlider, blueSlider,     // variables for sliders
+    redLabel, greenLabel, blueLabel;          // variables for slider labels
+
+  function setup() {
+    noCanvas();
+    redSlider = createSlider(0, 100, 0);      // create red slider, range 0 - 100
+    redSlider.id('red');                      // give it an id
+    redSlider.touchEnded(setColor);           // set the touch end callback
+    redSlider.position(60, 10);               // position the slider
+    redLabel = createSpan("red: ");           // create the label for the slider
+    redLabel.position(10, 10);                // position the label
+
+    greenSlider = createSlider (0, 100, 0);   // do the same for the green slider
+    greenSlider.id('green');
+    greenSlider.touchEnded(setColor);
+    greenSlider.position(60, 30);
+    greenLabel = createSpan("green: ");
+    greenLabel.position(10, 30);
+
+    blueSlider = createSlider (0,100,0);      // do the same for the blue slider
+    blueSlider.id('blue');
+    blueSlider.touchEnded(setColor);
+    blueSlider.position(60, 50);
+    blueLabel = createSpan("green: ");
+    blueLabel.position(10, 50);
+  }
+
+  function setColor() {
+    var colorVal = event.target.value;              // which slider cslled this function?
+    var color = event.target.id;                    // get the slider's id
+    httpGet('/data/put/' + color + '/' + colorVal); // make the call to the Yún to set the color
+  }
+  </script>
+</head>
+<body>
+
+</body>
+</html>

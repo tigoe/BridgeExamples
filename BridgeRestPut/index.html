@@ -14,8 +14,8 @@ by Tom Igoe -->
 <html>
 <head>
   <title></title>
-  <script src="p5.min.js"></script>
-  <script src="p5.dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.2/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.2/addons/p5.dom.js"></script>
   <script>
   var lastTemp = 0;   // last temperature reading
   var x = 0;          // x position
@@ -27,11 +27,6 @@ by Tom Igoe -->
     setInterval(getTemp, 5000);   // set an interval to do it every 5 seconds
     resetScreen();                // reset the screen
   }
-
-  // Draw is not needed
-  // function draw() {
-  //
-  // }
 
   function resetScreen() {
     background(255);                // white background

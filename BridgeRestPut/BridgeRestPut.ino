@@ -37,9 +37,13 @@ void loop() {
   float voltage = sensorValue *  (5000 / 1024);
   // convert the millivolts to temperature celsius:
   float temperature = (voltage - 500) / 10;
+  // make a String to output the data:
   String output = String(temperature);
+  // print it to the Serial Monitor:
   Serial.println(output);
   Serial.println("uploading data for REST API");
+  // send it to the Linux database:
   Bridge.put("temperature", output);
+  // wait five seconds before updating again:
   delay(5000);
 }
